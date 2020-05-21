@@ -18,15 +18,33 @@
     <img src="haha.png">
     WordPress自动化翻译系统版权所有：WP-China.Org，项目交流群：1046115671
   </div>
-  <div>
+  <div style="height: auto; width: 750px; border-style: solid; border-width: 1px;">
+    <h3>使用帮助</h3>
+    <ol>
+      <li>
+        点击"浏览"按钮，选择要汉化的包
+      </li>
+      <li>
+        点击"开始翻译"按钮，上传包到服务器并开始翻译
+      </li>
+      <li>
+        翻译时服务器端程序的输出会显示在"终端回显"区块内
+      </li>
+      <li>
+        翻译结束后在终端回显区块的末尾会生成汉化包的下载地址
+      </li>
+      <li>
+        将下载下来的汉化包解压上传到"WordPress安装目录/wp-content/languages/plugins/"中即可
+      </li>
+    </ol>
+  </div>
+  <div style="margin-top: 20px;">
     选择要汉化的包：<input type="file" class="file">
     <div style="color: red; font-size: 15px;"><b>【暂时只支持插件包的汉化】</b>，点击"开始翻译"后请耐心等待待翻译包的上传，不要重复刷新页面</div>
   </div>
   <button @click="go">开始翻译</button>
   <h3 style="margin-top: 20px;">终端回显：</h3>
-  <div id="shell_echo" style="width: 700px; height: auto;">
-    <div v-html="echo_str"><div>
-  </div>
+  <div v-html="echo_str" style="background-color: black; color: #00FF00; width: 700px; height: auto;"><div>
 </div>
 </body>
 
