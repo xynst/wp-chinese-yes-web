@@ -40,13 +40,12 @@
   </div>
   <div style="margin-top: 20px;">
     选择要汉化的包：<input type="file" class="file">
-    <div style="color: red; font-size: 15px;"><b>【暂时只支持插件包的汉化】</b>，点击"开始翻译"后请耐心等待待翻译包的上传，不要重复刷新页面</div>
+    <div style="color: red; font-size: 15px;"><b>!!!【暂时只支持插件包的汉化】!!!</b>，点击"开始翻译"后请耐心等待待翻译包的上传，不要重复刷新页面</div>
   </div>
   <button @click="go">开始翻译</button>
   <h3 style="margin-top: 20px;">终端回显：</h3>
-  <div v-html="echo_str" style="background-color: black; color: #00FF00; width: 700px; height: auto;"><div>
+  <div v-html="echo_str" style="background-color: black; color: #00FF00; width: 700px; height: auto;"></div>
 </div>
-</body>
 
 <script src="https://static.ibadboy.net/element/static/js/vue.js"></script>
 <script src="https://static.ibadboy.net/element/static/js/axios.min.js"></script>
@@ -98,7 +97,5 @@
         },
     })
 </script>
-<style>
-
-</style>
+</body>
 </html>
