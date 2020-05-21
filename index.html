@@ -68,8 +68,10 @@
                             alert('当前已有任务在进行')
                         } else if (response.data === -2) {
                             alert('包上传失败')
-                        }else if (response.data === -3) {
+                        } else if (response.data === -3) {
                             alert('未选择包')
+                        } else {
+                            alert('当前任务执行完成，请滚动到页面底部查看下载链接，若"终端回显"中无内容则可能是发生了致命错误，请联系管理员QQ：1642491905')
                         }
                     })
             },
