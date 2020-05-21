@@ -3,25 +3,33 @@
 <head>
   <meta charset="UTF-8">
   <title>WordPress自动化翻译系统(v0.0.1 beta)</title>
+    <link rel="stylesheet" href="./layui/css/layui.css"  media="all">
 </head>
+<style>
+.test {
+  max-width: 900px;
+  background: #eee;
+}
+.logo{
+align:center;
+margin:auto;
+}
+</style>
+
 <body>
-<div id="app">
-  <h1>WordPress自动化翻译系统(v0.0.1 beta) | 交流/反馈QQ群：1046115671</h1>
-  <div style="float: right; width: 700px; height: 900px; border-style: solid; border-width: 1px;">
-    <h1 style="margin-right: auto; margin-left: auto; width: 100px;">关于</h1>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WordPress自动化翻译系统是<b>WP中国本土化项目(WP-China.Org)</b>的一部分，该系统将分两支，一支与WP中国本土仓库结合，为国内用户提供官方仓库的完整汉化支持，另一支独立为网页版，供制作高质量商业翻译包的用户免费使用。<br/>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WP中国本土化项目顾名思义就是一个围绕WordPress在中国的本土化进程来开展工作的项目，这是一个为国内WordPress生态的基础设施建设服务的项目，其组织形式为：<b>开源|公益|中立</b>。<br/>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;其目标是做大国内WordPress市场蛋糕，让开发者有更多的用户群体，让用户有更多优质的软件生态和更好用的WordPress。<br/>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;项目计划组建一个本土化工作小组/社区，联合国内WordPress生态中知名大佬共同倡议发起，以机器自动化翻译+志愿者人工校准+自动化上架推送的方式提供WordPress官方仓库、插件/主题帮助文档等的完整汉化支持，并通过WP-China-Yes插件及开放给开发者们集成的SDK等方式将成果接入到终端用户的站点中。<br/>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;未来期望达成的形式是为每个插件/主题添加"完善翻译"，点击后跳转到"翻译协同平台（建设中）"上该包对应的翻译界面，引导用户参与校准，经管理员审核通过后自动全网推送并自动加入翻译记忆库，日后机翻时优先从记忆库调取。同时为每个插件/主题添加"帮助文档"，点击后跳转到国内的"WP生态wiki（建设中）"，允许用户查阅汉化后的帮助文档并引导用户参与文档校准。<br />
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;效果图如下所示：
-    <img src="haha.png">
-    WordPress自动化翻译系统版权所有：WP-China.Org，项目交流群：1046115671
-  </div>
-  <div style="height: auto; width: 750px; border-style: solid; border-width: 1px;">
-    <h3>使用帮助</h3>
-    <ol>
-      <li>
+<div class="layui-elem-field layui-field-title">
+ 
+<ul class="layui-nav">
+  <li class="layui-nav-item layui-this">
+    <a href="./">首页</a>
+  </li>
+  <li class="layui-nav-item"><a href="./about.html">关于</a></li>
+</ul>
+</div>
+  <div class="layui-elem-field layui-field-title test logo">
+    <blockquote class="layui-elem-quote layui-quote-nm">
+  <h1 style="margin-right: auto; margin-left: auto; text-align:center;">使用帮助</h1> <br/>
+  <li>
         点击"浏览"按钮，选择要汉化的包
       </li>
       <li>
@@ -36,20 +44,35 @@
       <li>
         将下载下来的汉化包解压上传到"WordPress安装目录/wp-content/languages/plugins/"中即可
       </li>
-    </ol>
+    
+</blockquote>
   </div>
-  <div style="margin-top: 20px;">
-    选择要汉化的包：<input type="file" class="file">
-    <div style="color: red; font-size: 15px;"><b>!!!【暂时只支持插件包的汉化】!!!</b>，点击"开始翻译"后请耐心等待待翻译包的上传，不要重复刷新页面</div>
-  </div>
-  <button @click="go">开始翻译</button>
+</div>
+  <div class="logo" style="text-align:center">
+    <h2 style="margin-top: 30px;">选择要汉化的包：</h2><br/><div style="color: red; font-size: 15px;"><b>!!!【暂时只支持插件包的汉化】!!!</b>，点击"开始翻译"后请耐心等待待翻译包的上传，不要重复刷新页面</div><div class="layui-upload logo" style="margin-top: 30px;">
+  <button type="button" class="layui-btn layui-btn-normal" id="test8" >选择文件</button>
+  <button @click="go"type="button" class="layui-btn" id="tset9">开始翻译</button></div>
   <h3 style="margin-top: 20px;">终端回显：</h3>
   <div v-html="echo_str" style="background-color: black; color: #00FF00; width: 700px; height: auto;"></div>
 </div>
 
-<script src="https://static.ibadboy.net/element/static/js/vue.js"></script>
-<script src="https://static.ibadboy.net/element/static/js/axios.min.js"></script>
+<script src="https://static.ibadboy.net/element/static/js/vue.js" charset="utf-8"></script>
+<script src="https://static.ibadboy.net/element/static/js/axios.min.js" charset="utf-8"></script>
+<script src="./layui/layui.js" charset="utf-8"></script>
 <script>
+layui.use('upload', function(){
+  var $ = layui.jquery
+  ,upload = layui.upload;
+    upload.render({ //允许上传的文件后缀
+    elem: '#test8'
+    ,url: '/go.php' //改成您自己的上传接口
+    ,auto: false
+    ,bindAction:'#tset9'
+    ,accept: 'file' //普通文件
+    ,exts: 'zip' //只允许上传压缩文件
+    ,drag:'true'
+  });
+});
     new Vue({
         el: '#app',
         data() {
@@ -97,5 +120,8 @@
         },
     })
 </script>
+  <div class="logo" style="margin-top: 30%;text-align:center">
+    WordPress自动化翻译系统版权所有：<a href="//WP-China.Org" target="_blank">WP-China.Org</a>，项目交流群：<a href="//jq.qq.com/?_wv=1027&k=zixKjAPp" target="_blank">1046115671</a>
+  </div>
 </body>
 </html>
